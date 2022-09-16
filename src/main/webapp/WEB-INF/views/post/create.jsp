@@ -49,7 +49,7 @@
     <div class="container-md pt-3">
         <div class="card">
             <div class="card-header">
-                Добавить тему
+                <h5>Добавить тему</h5>
             </div>
             <div class="card-body">
                 <form action="<c:url value='/save'/>" method='POST'>

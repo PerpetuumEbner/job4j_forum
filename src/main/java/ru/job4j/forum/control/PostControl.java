@@ -18,7 +18,7 @@ public class PostControl {
 
     @GetMapping("/create")
     public String create() {
-        return "create";
+        return "post/create";
     }
 
     @PostMapping("/save")
@@ -31,13 +31,13 @@ public class PostControl {
     @GetMapping("/post")
     public String postDetail(Model model, @RequestParam("id") int id) {
         model.addAttribute("post", postService.findById(id));
-        return "post";
+        return "post/post";
     }
 
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") int id) {
         model.addAttribute("post", postService.findById(id));
-        return "edit";
+        return "post/edit";
     }
 
     @PostMapping("/update")

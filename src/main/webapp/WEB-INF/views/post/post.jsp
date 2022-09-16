@@ -49,7 +49,7 @@
     <div class="container-md pt-3">
         <div class="card">
             <div class="card-header">
-                ${post.name}
+                <h5>${post.name}</h4>
             </div>
             <div class="card-body">
                 <div class="form-group pt-3">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a class="btn btn-outline-primary" th:href="<c:url value='/edit?id=${post.id}'/>"
+                <a class="btn btn-outline-primary" href="<c:url value='/edit?id=${post.id}'/>"
                    role="button">Редактировать</a>
             </div>
         </div>

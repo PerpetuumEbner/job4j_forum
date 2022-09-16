@@ -1,10 +1,12 @@
 package ru.job4j.forum.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -15,6 +17,7 @@ public class Post {
 
     private String description;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate created;
 
     @Override

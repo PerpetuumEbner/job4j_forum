@@ -49,7 +49,7 @@
     <div class="container-md pt-3">
         <div class="card">
             <div class="card-header">
-                Изменить
+                <h5>Изменить</h5>
             </div>
             <div class="card-body">
                 <form action="<c:url value='/update'/>" method='POST'>
