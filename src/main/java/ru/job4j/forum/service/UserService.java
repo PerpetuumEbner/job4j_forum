@@ -1,8 +1,13 @@
 package ru.job4j.forum.service;
 
+import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.User;
 import ru.job4j.forum.repository.UserRepository;
 
+import java.util.Collection;
+import java.util.Optional;
+
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
@@ -14,7 +19,11 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User findByName(String username) {
-        return userRepository.findByName(username);
+    public Optional<User> findByName(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public Collection<User> findAll() {
+        return userRepository.findAll();
     }
 }

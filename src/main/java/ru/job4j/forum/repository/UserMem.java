@@ -1,5 +1,6 @@
 package ru.job4j.forum.repository;
 
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.User;
 
 import java.util.Map;
@@ -12,8 +13,8 @@ public class UserMem {
     private final AtomicInteger ID = new AtomicInteger(2);
 
     public UserMem() {
-        users.put(1, new User(1, "admin", "password"));
-        users.put(2, new User(2, "user", "password"));
+        users.put(1, new User(1, "admin", "password", true, new Authority(2, "ROLE_ADMIN")));
+        users.put(2, new User(2, "user", "password", true, new Authority(2, "ROLE_ADMIN")));
     }
 
     public void create(User user) {
@@ -22,6 +23,6 @@ public class UserMem {
     }
 
     public String findByName(User user) {
-        return users.get(user).getName();
+        return users.get(user).getUsername();
     }
 }

@@ -10,21 +10,13 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "authorities")
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String username;
-
-    private String password;
-
-    private boolean enabled;
-
-    @ManyToOne
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
+    private String authority;
 
     @Override
     public boolean equals(Object o) {
@@ -34,8 +26,8 @@ public class User {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        User user = (User) o;
-        return id == user.id;
+        Authority authority = (Authority) o;
+        return id == authority.id;
     }
 
     @Override
