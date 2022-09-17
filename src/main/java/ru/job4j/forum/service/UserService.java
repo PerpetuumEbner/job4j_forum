@@ -1,20 +1,20 @@
 package ru.job4j.forum.service;
 
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.repository.UserMem;
+import ru.job4j.forum.repository.UserRepository;
 
 public class UserService {
-    private final UserMem userMem;
+    private final UserRepository userRepository;
 
-    public UserService(UserMem userMem) {
-        this.userMem = userMem;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public void create(User user) {
-        userMem.create(user);
+        userRepository.save(user);
     }
 
-    public String findByName(User user) {
-        return userMem.findByName(user);
+    public User findByName(String username) {
+        return userRepository.findByName(username);
     }
 }

@@ -3,6 +3,7 @@ package ru.job4j.forum.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,7 +11,11 @@ import java.util.Objects;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
