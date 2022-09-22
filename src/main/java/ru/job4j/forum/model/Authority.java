@@ -19,6 +19,14 @@ public class Authority {
     private String authority;
 
     @Override
+    public String toString() {
+        return "Authority{" +
+                "id=" + id +
+                ", authority='" + authority + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
