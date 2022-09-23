@@ -17,7 +17,9 @@ import ru.job4j.forum.service.UserService;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -51,11 +53,13 @@ class RegControlTest {
     @Test
     @WithMockUser
     public void shouldReturnRegUser() throws Exception {
+        Authority authority = new Authority();
+        authority.setAuthority("ROLE_USER");
+        when(authorityService.findByAuthority(any())).thenReturn(authority);
         this.mockMvc.perform(post("/reg")
                         .param("username", "user")
                         .param("password", "password")
-                        .param("enabled", "true")
-                        .param("authority", "Authority{id=1, authority='ROLE_USER'}"))
+                        .param("enabled", "true"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
@@ -63,6 +67,6 @@ class RegControlTest {
         assertThat(argument.getValue().getUsername(), is("user"));
         assertThat(argument.getValue().getPassword(), is(encoder.encode("password")));
         assertThat(argument.getValue().isEnabled(), is(true));
-        assertThat(argument.getValue().getAuthority(), is(new Authority(1, "ROLE_USER")));
+        assertThat(argument.getValue().getAuthority().getAuthority(), is("ROLE_USER"));
     }
 }
